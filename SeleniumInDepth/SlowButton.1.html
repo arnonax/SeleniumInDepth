@@ -1,0 +1,19 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Wait 3 seconds</title>
+    <script>
+        
+        function wait3Seconds() {
+            window.setTimeout(function() {
+                    document.getElementById("myInput").value = "Done";
+                },
+                3000);
+        }
+
+    </script>
+</head>
+<body>
+    <button id="myButton" onclick="wait3Seconds()">Click me!</button>
+    <input id="myInput"/>
+</body>
+</html>

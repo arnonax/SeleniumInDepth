@@ -1,0 +1,39 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Wait 3 seconds</title>
+
+    <script>
+        function helloWorld() {
+            var span = document.getElementById("mySpan");
+            span.innerText = "Hello, world";
+        }
+
+        function calculate(x, y) {
+            return x + y;
+        }
+
+        function setText(element, text) {
+            element.innerText = text;
+        }
+
+        var newElementCounter = 0;
+
+        function createNewElement() {
+            var newElement = document.createElement("span");
+            newElement.style.whiteSpace = "pre";
+            newElement.innerText = "I'm a new element: " + newElementCounter + "\n";
+            newElementCounter++;
+
+            var newElementsDiv = document.getElementById("newElements");
+            newElementsDiv.appendChild(newElement);
+
+            return newElement;
+        }
+    </script>
+
+</head>
+<body>
+<span id="mySpan"></span>
+<div id="newElements"></div>
+</body>
+</html>

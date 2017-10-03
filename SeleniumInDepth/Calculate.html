@@ -1,0 +1,36 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Simple calculator</title>
+    <style>
+        input {
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+
+        function displayExpression() {
+            var x = document.getElementById("X").value;
+            var y = document.getElementById("Y").value;
+            document.getElementById("expression").innerText = x + "+" + y + "=";
+        }
+
+        function calculate() {
+            var x = document.getElementById("X").value;
+            var y = document.getElementById("Y").value;
+            var result = parseInt(x) + parseInt(y);
+            document.getElementById("calcualationResult").innerText = result;
+            //document.getElementById("calculationResult").innerText = result;
+        }
+
+    </script>
+</head>
+<body>
+<span>X=</span><input id="X"/>
+<span>Y=</span><input id="Y" onblur="displayExpression()"/>
+<br/>
+<button id="btnCalc" onclick="calculate()">Calculate</button>
+<span id="expression"></span>
+<span id="calculationResult"></span>
+</body>
+</html>
