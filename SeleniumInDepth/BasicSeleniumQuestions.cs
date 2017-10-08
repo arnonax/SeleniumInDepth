@@ -50,6 +50,20 @@ namespace SeleniumInDepth
         }
 
         [TestMethod]
+        public void ExplicitWait()
+        {
+            _driver.Url = BaseUrl + "SimpleDemo.2.html";
+
+            var button = _driver.FindElement(By.Id("myButton"));
+            var input = _driver.FindElement(By.Id("myInput"));
+
+            button.Click();
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));     // change to 1 second to see it fail
+            var done = wait.Until(ExpectedConditions.TextToBePresentInElementValue(input, "Done"));
+            Assert.IsTrue(done);
+        }
+
+        [TestMethod]
         public void WaitAndIgnoreExceptions()
         {
             const string filename = @"c:\temp\test.txt";
