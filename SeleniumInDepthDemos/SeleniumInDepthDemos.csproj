@@ -93,7 +93,7 @@
     <Content Include="RemoveElement.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SeemlessStaleElement.html">
+    <Content Include="RecreateElement.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SimpleDemo.1.html">

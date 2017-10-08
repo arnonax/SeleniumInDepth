@@ -5,8 +5,10 @@
 
         function updateInput() {
             var input = document.getElementById("myInput");
+            // Remove the origirnal element
             document.body.removeChild(input);
 
+            // Create a new, identical element with the same id.
             var newInput = document.createElement("input");
             newInput.id = input.id;
             document.body.appendChild(newInput);

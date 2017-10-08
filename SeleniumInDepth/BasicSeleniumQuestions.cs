@@ -81,9 +81,9 @@ namespace SeleniumInDepth
         {
             _driver.Url = BaseUrl + "DummyPage.html";
 
-            var button = _driver.FindElement(By.Id("NonExistentId"));
+            var button = _driver.FindElement(By.Id("NonExistentId")); // (a)
 
-            button.Click();
+            button.Click(); // (b)
         }
 
         [TestMethod]
@@ -101,7 +101,7 @@ namespace SeleniumInDepth
         }
 
         [TestMethod]
-        public void StaleReferenceElementDemo()
+        public void WhichExceptionWillBeThrown()
         {
             _driver.Url = BaseUrl + "RemoveElement.html";
             // Find both elements first - Should succeed!
@@ -114,13 +114,10 @@ namespace SeleniumInDepth
             Assert.AreEqual("Done", input.GetAttribute("value"));
         }
 
-        // Pay attention to where the StaleReferenceElementException is thrown from, 
-        // as opposed to where NoSuchElementException is thrown from!
-
         [TestMethod]
-        public void UnjustifiedStaleElement()
+        public void RecreateElement()
         {
-            _driver.Url = BaseUrl + "SeemlessStaleElement.html";
+            _driver.Url = BaseUrl + "RecreateElement.html";
             var button = _driver.FindElement(By.Id("myButton"));
             var input = _driver.FindElement(By.Id("myInput"));
 
@@ -128,8 +125,6 @@ namespace SeleniumInDepth
 
             Assert.AreEqual("Done", input.GetAttribute("value"));
         }
-
-        // Question: can FindElement also throw StaleElementReferenceException?
 
         [TestMethod]
         public void WhatHappensWhenFindElementsFindsNothing()

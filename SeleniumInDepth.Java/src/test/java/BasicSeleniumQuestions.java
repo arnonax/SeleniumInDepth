@@ -114,7 +114,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void StaleReferenceElementDemo()
+    public void WhichExceptionWillBeThrown()
     {
         driver.navigate().to(BASE_URL + "RemoveElement.html");
         // Find both elements first - Should succeed!
@@ -127,13 +127,10 @@ public class BasicSeleniumQuestions {
         Assert.assertEquals("Done", input.getAttribute("value"));
     }
 
-    // Pay attention to where the StaleReferenceElementException is thrown from,
-    // as opposed to where NoSuchElementException is thrown from!
-
     @Test
-    public void UnjustifiedStaleElement()
+    public void RecreateElement()
     {
-        driver.navigate().to(BASE_URL + "SeemlessStaleElement.html");
+        driver.navigate().to(BASE_URL + "RecreateElement.html");
         WebElement button = driver.findElement(By.id("myButton"));
         WebElement input = driver.findElement(By.id("myInput"));
 
@@ -141,8 +138,6 @@ public class BasicSeleniumQuestions {
 
         Assert.assertEquals("Done", input.getAttribute("value"));
     }
-
-    // Question: can FindElement also throw StaleElementReferenceException?
 
     @Test
     public void WhatHappensWhenfindElementsFindsNothing()
