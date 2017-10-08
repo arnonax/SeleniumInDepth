@@ -105,7 +105,9 @@
     <Content Include="SimpleDemo.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SquareNumbers.html" />
+    <Content Include="SquareNumbers.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
