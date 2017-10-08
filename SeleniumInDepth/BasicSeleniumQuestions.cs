@@ -11,7 +11,8 @@ namespace SeleniumInDepth
     [TestClass]
     public class BasicSeleniumQuestions
     {
-        private const string BaseUrl = "https://SeleniumInDepthDemos.AzureWebSites.net/";
+        //private const string BaseUrl = "https://SeleniumInDepthDemos.AzureWebSites.net/";
+        private readonly string BaseUrl = $"http://{Directory.GetCurrentDirectory()}/";
 
         #region plumbing code
 
@@ -64,16 +65,17 @@ namespace SeleniumInDepth
         }
 
         [TestMethod]
-        public void WaitAndIgnoreExceptions()
+        public void SquareOf10Is100()
         {
-            const string filename = @"c:\temp\test.txt";
-            File.Delete(filename);
-            
-            var wait = new WebDriverWait(_driver, TimeSpan.FromMinutes(1));
-            wait.IgnoreExceptionTypes(typeof(FileNotFoundException));
-            var content = wait.Until(drv => File.ReadAllText(filename));
+            _driver.Url = BaseUrl + "SquareNumbers.html";
 
-            Assert.AreEqual("Hello", content);
+            var num = _driver.FindElement(By.Id("num"));
+            var result = _driver.FindElement(By.Id("result"));
+
+            var wait = new WebDriverWait(_driver, TimeSpan.FromMinutes(1));
+            wait.Until(drv => num.Text == "10");
+
+            Assert.AreEqual("100", result.Text);
         }
 
         [TestMethod] // Which line throws the exception?
