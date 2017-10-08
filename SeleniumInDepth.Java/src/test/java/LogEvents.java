@@ -6,9 +6,9 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class LogEvents extends FailingTest {
     @Before
-    public void TestInitialize() {
-        super.TestInitialize();
-        EventFiringWebDriver eventFiringDriver = new EventFiringWebDriver(_driver);
+    public void testInitialize() {
+        super.testInitialize();
+        EventFiringWebDriver eventFiringDriver = new EventFiringWebDriver(driver);
 
         eventFiringDriver.register(new AbstractWebDriverEventListener() {
             @Override
@@ -22,6 +22,6 @@ public class LogEvents extends FailingTest {
             }
         });
 
-        _driver = eventFiringDriver;
+        driver = eventFiringDriver;
     }
 }

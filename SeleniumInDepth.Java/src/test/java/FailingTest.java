@@ -10,33 +10,34 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class FailingTest
 {
     // ReSharper disable once InconsistentNaming
-    protected WebDriver _driver;
+    WebDriver driver;
 
     @Before
-    public void TestInitialize() {
+    public void testInitialize() {
+        //noinspection SpellCheckingInspection
         System.setProperty("webdriver.chrome.driver","c:\\temp\\chromeDriver.exe");
-        _driver = new ChromeDriver();
+        driver = new ChromeDriver();
     }
 
     @After
-    public void TestCleanup() {
-        _driver.quit();
+    public void testCleanup() {
+        driver.quit();
     }
 
     @Test
-    public void WasTheButtonReallyClicked()
+    public void wasTheButtonReallyClicked()
     {
-        //_driver.navigate().to(BasicSeleniumQuestions.BASE_URL + "Calculate.passes.html");
-        _driver.navigate().to(BasicSeleniumQuestions.BASE_URL + "Calculate.fails.html");
+        //driver.navigate().to(BasicSeleniumQuestions.BASE_URL + "Calculate.passes.html");
+        driver.navigate().to(BasicSeleniumQuestions.BASE_URL + "Calculate.fails.html");
 
-        WebElement x = _driver.findElement(By.id("X"));
+        WebElement x = driver.findElement(By.id("X"));
         x.sendKeys("5");
-        WebElement y = _driver.findElement(By.id("Y"));
+        WebElement y = driver.findElement(By.id("Y"));
         y.sendKeys("3");
-        WebElement button = _driver.findElement(By.tagName("button"));
+        WebElement button = driver.findElement(By.tagName("button"));
         button.click();
 
-        String result = _driver.findElement(By.id("calculationResult")).getText();
+        String result = driver.findElement(By.id("calculationResult")).getText();
         Assert.assertEquals("8", result);
     }
 }

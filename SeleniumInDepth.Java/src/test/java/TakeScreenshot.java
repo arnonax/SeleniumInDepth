@@ -8,15 +8,15 @@ import java.io.IOException;
 
 public class TakeScreenshot extends FailingTest {
     @After
-    public void TestCleanup() {
-        File screenshot = ((TakesScreenshot) _driver).getScreenshotAs(OutputType.FILE);
+    public void testCleanup() {
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenshot, new File("Screenshot.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        super.TestCleanup();
+        super.testCleanup();
     }
 }
 

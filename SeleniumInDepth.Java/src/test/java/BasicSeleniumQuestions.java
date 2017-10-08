@@ -14,24 +14,21 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Arnon on 03/10/2017.
- */
 public class BasicSeleniumQuestions {
-    public static final String BASE_URL = "https://SeleniumInDepthDemos.AzureWebSites.net/";
+    static final String BASE_URL = "https://SeleniumInDepthDemos.AzureWebSites.net/";
     // region plumbing code
 
     private WebDriver driver;
 
     @Before
-    public void TestInitialize()
+    public void testInitialize()
     {
         System.setProperty("webdriver.chrome.driver","c:\\temp\\chromeDriver.exe");
         driver = new ChromeDriver();
     }
 
     @After
-    public void TestCleanup()
+    public void testCleanup()
     {
         driver.quit();
     }
@@ -39,7 +36,7 @@ public class BasicSeleniumQuestions {
     // endregion
 
     @Test
-    public void SimpleDemo()
+    public void simpleDemo()
     {
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -57,7 +54,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void ExplicitWait()
+    public void explicitWait()
     {
         driver.navigate().to(BASE_URL + "SimpleDemo.2.html");
 
@@ -71,7 +68,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void FirstSquareToCross10IsOf4()
+    public void firstSquareToCross10IsOf4()
     {
         driver.navigate().to(BASE_URL + "SquareNumbers.html");
 
@@ -90,7 +87,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test // Which line throws the exception?
-    public void ObviousNoSuchElementException()
+    public void obviousNoSuchElementException()
     {
         driver.navigate().to(BASE_URL + "DummyPage.html");
 
@@ -100,7 +97,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void WhenImplicitlyWaitHelps()
+    public void whenImplicitlyWaitHelps()
     {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -114,7 +111,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void WhichExceptionWillBeThrown()
+    public void whichExceptionWillBeThrown()
     {
         driver.navigate().to(BASE_URL + "RemoveElement.html");
         // Find both elements first - Should succeed!
@@ -128,7 +125,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void RecreateElement()
+    public void recreateElement()
     {
         driver.navigate().to(BASE_URL + "RecreateElement.html");
         WebElement button = driver.findElement(By.id("myButton"));
@@ -140,7 +137,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void WhatHappensWhenfindElementsFindsNothing()
+    public void whatHappensWhenfindElementsFindsNothing()
     {
         driver.navigate().to("http://www.google.com");
         List<WebElement> elements = driver.findElements(By.className("non-exitent-class-name"));
@@ -172,7 +169,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void CalculateTest()
+    public void calculateTest()
     {
         driver.navigate().to(BASE_URL + "Calculate.html");
         WebElement x = driver.findElement(By.id("X"));

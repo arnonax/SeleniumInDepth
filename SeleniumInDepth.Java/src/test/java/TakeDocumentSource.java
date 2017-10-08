@@ -5,8 +5,8 @@ import java.io.PrintWriter;
 
 public class TakeDocumentSource extends FailingTest {
     @After
-    public void TestCleanup() {
-        String pageSource = _driver.getPageSource();
+    public void testCleanup() {
+        String pageSource = driver.getPageSource();
         //Console.WriteLine(pageSource);
         PrintWriter file = null;
         try {
@@ -16,9 +16,10 @@ public class TakeDocumentSource extends FailingTest {
             e.printStackTrace();
         }
         finally {
-            file.close();
+            if (file != null)
+                file.close();
         }
 
-        super.TestCleanup();
+        super.testCleanup();
     }
 }
