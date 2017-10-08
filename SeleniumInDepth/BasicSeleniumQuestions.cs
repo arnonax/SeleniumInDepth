@@ -11,9 +11,8 @@ namespace SeleniumInDepth
     [TestClass]
     public class BasicSeleniumQuestions
     {
-        //private const string BaseUrl = "https://SeleniumInDepthDemos.AzureWebSites.net/";
-        private readonly string BaseUrl = $"http://{Directory.GetCurrentDirectory()}/";
-
+        private const string BaseUrl = "https://SeleniumInDepthDemos.AzureWebSites.net/";
+        
         #region plumbing code
 
         private IWebDriver _driver;
