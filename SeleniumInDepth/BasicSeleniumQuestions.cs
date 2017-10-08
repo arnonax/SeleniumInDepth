@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -64,7 +63,7 @@ namespace SeleniumInDepth
         }
 
         [TestMethod]
-        public void SquareOf10Is100()
+        public void FirstSquareToCross10IsOf4()
         {
             _driver.Url = BaseUrl + "SquareNumbers.html";
 
@@ -72,9 +71,9 @@ namespace SeleniumInDepth
             var result = _driver.FindElement(By.Id("result"));
 
             var wait = new WebDriverWait(_driver, TimeSpan.FromMinutes(1));
-            wait.Until(drv => num.Text == "10");
+            wait.Until(drv => int.Parse(result.Text) > 10);
 
-            Assert.AreEqual("100", result.Text);
+            Assert.AreEqual("4", num.Text);
         }
 
         [TestMethod] // Which line throws the exception?

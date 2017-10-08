@@ -1,4 +1,4 @@
-import com.google.common.io.Files;
+import com.google.common.base.Predicate;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,13 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -75,27 +71,22 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void WaitAndIgnoreExceptions()
+    public void FirstSquareToCross10IsOf4()
     {
-        final String filename = "c:\\temp\\test.txt";
-        final File file = new File(filename);
-        //noinspection ResultOfMethodCallIgnored
-        file.delete();
+        driver.navigate().to(BASE_URL + "SquareNumbers.html");
 
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-        wait.ignoring(IOException.class);
-        String content = wait.until(new ExpectedCondition<String>() {
-            public String apply(WebDriver drv) {
-                try {
-                    return Files.toString(file, Charset.defaultCharset());
-                }
-                catch (IOException ex) {
-                    return null;
-                }
+        WebElement num = driver.findElement(By.id("num"));
+        final WebElement result = driver.findElement(By.id("result"));
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        Predicate<WebDriver> resultIsMoreThan10 = new Predicate<WebDriver>() {
+            public boolean apply(WebDriver webDriver) {
+                return Integer.parseInt(result.getText()) > 10;
             }
-        });
+        };
+        wait.until(resultIsMoreThan10);
 
-        Assert.assertEquals("Hello", content);
+        Assert.assertEquals("4", num.getText());
     }
 
     @Test // Which line throws the exception?
