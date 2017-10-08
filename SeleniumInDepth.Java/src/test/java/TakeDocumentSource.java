@@ -8,10 +8,15 @@ public class TakeDocumentSource extends FailingTest {
     public void TestCleanup() {
         String pageSource = _driver.getPageSource();
         //Console.WriteLine(pageSource);
+        PrintWriter file = null;
         try {
-            PrintWriter file = new PrintWriter("Source.html");
+            file = new PrintWriter("Source.html");
+            file.write(pageSource);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+        finally {
+            file.close();
         }
 
         super.TestCleanup();
