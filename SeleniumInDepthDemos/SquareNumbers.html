@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        onload = function () {
+            var numElement = document.getElementById('num');
+            var resultElement = document.getElementById('result');
+
+            function displayNextResult(n) {
+                numElement.textContent = n;
+                resultElement.textContent = n * n;
+                setTimeout(function () {
+                    displayNextResult(n + 1);
+                }, 1000);
+            }
+
+            displayNextResult(1);
+        }
+    </script>
+</head>
+<body>
+The square of
+<span id="num"></span>
+is
+<span id="result"></span>
+</body>
+</html>
