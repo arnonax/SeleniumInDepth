@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Arnon on 03/10/2017.
  */
 public class BasicSeleniumQuestions {
+    public static final String BASE_URL = "https://SeleniumInDepthDemos.AzureWebSites.net/";
     // region plumbing code
 
     private WebDriver _driver;
@@ -39,18 +40,12 @@ public class BasicSeleniumQuestions {
         _driver.quit();
     }
 
-    private static String getUrlForFile(String filename)
-    {
-        //return $"file:///{Directory.GetCurrentDirectory()}/{filename}";
-        return "https://SeleniumInDepthDemos.AzureWebSites.net/" + filename;
-    }
-
     // endregion
 
     @Test
     public void IsItABugInSelenium()
     {
-        _driver.navigate().to(getUrlForFile("IsItABugInSelenium.html"));
+        _driver.navigate().to(BASE_URL + "IsItABugInSelenium.html");
 
         WebElement button = _driver.findElement(By.id("myButton"));
         button.click();
@@ -59,7 +54,7 @@ public class BasicSeleniumQuestions {
     @Test
     public void DoWeReallyNeedWait()
     {
-        _driver.navigate().to(getUrlForFile("SlowButton.html"));
+        _driver.navigate().to(BASE_URL + "SlowButton.html");
 
         WebElement button = _driver.findElement(By.id("myButton"));
         WebElement input = _driver.findElement(By.id("myInput"));
@@ -72,7 +67,7 @@ public class BasicSeleniumQuestions {
     @Test
     public void WhatsTheDifference()
     {
-        _driver.navigate().to(getUrlForFile("SlowButton.1.html"));
+        _driver.navigate().to(BASE_URL + "SlowButton.1.html");
 
         WebElement button = _driver.findElement(By.id("myButton"));
         WebElement input = _driver.findElement(By.id("myInput"));
@@ -87,7 +82,7 @@ public class BasicSeleniumQuestions {
     {
         _driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        _driver.navigate().to(getUrlForFile("SlowButton.1.html"));
+        _driver.navigate().to(BASE_URL + "SlowButton.1.html");
 
         WebElement button = _driver.findElement(By.id("myButton"));
         WebElement input = _driver.findElement(By.id("myInput"));
@@ -100,7 +95,7 @@ public class BasicSeleniumQuestions {
     @Test
     public void ExplicitWait()
     {
-        _driver.navigate().to(getUrlForFile("SlowButton.1.html"));
+        _driver.navigate().to(BASE_URL + "SlowButton.1.html");
 
         WebElement button = _driver.findElement(By.id("myButton"));
         final WebElement input = _driver.findElement(By.id("myInput"));
@@ -138,7 +133,7 @@ public class BasicSeleniumQuestions {
     @Test // Which line throws the exception?
     public void ObviousNoSuchElementException()
     {
-        _driver.navigate().to(getUrlForFile("DummyPage.html"));
+        _driver.navigate().to(BASE_URL + "DummyPage.html");
 
         WebElement button = _driver.findElement(By.id("NonExistentId")); // (a)
 
@@ -150,7 +145,7 @@ public class BasicSeleniumQuestions {
     {
         _driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        _driver.navigate().to(getUrlForFile("DynamicElement.html"));
+        _driver.navigate().to(BASE_URL + "DynamicElement.html");
         WebElement button = _driver.findElement(By.id("myButton"));
         button.click();
 
@@ -162,7 +157,7 @@ public class BasicSeleniumQuestions {
     @Test
     public void StaleReferenceElementDemo()
     {
-        _driver.navigate().to(getUrlForFile("RemoveElement.html"));
+        _driver.navigate().to(BASE_URL + "RemoveElement.html");
         // Find both elements first - Should succeed!
         WebElement button = _driver.findElement(By.id("myButton"));
         WebElement input = _driver.findElement(By.id("myInput"));
@@ -179,7 +174,7 @@ public class BasicSeleniumQuestions {
     @Test
     public void UnjustifiedStaleElement()
     {
-        _driver.navigate().to(getUrlForFile("SeemlessStaleElement.html"));
+        _driver.navigate().to(BASE_URL + "SeemlessStaleElement.html");
         WebElement button = _driver.findElement(By.id("myButton"));
         WebElement input = _driver.findElement(By.id("myInput"));
 
@@ -225,7 +220,7 @@ public class BasicSeleniumQuestions {
     @Test
     public void CalculateTest()
     {
-        _driver.navigate().to(getUrlForFile("Calculate.html"));
+        _driver.navigate().to(BASE_URL + "Calculate.html");
         WebElement x = _driver.findElement(By.id("X"));
         x.sendKeys("5");
         WebElement y = _driver.findElement(By.id("Y"));

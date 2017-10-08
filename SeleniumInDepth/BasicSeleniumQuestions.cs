@@ -11,6 +11,8 @@ namespace SeleniumInDepth
     [TestClass]
     public class BasicSeleniumQuestions
     {
+        private const string BaseUrl = "https://SeleniumInDepthDemos.AzureWebSites.net/";
+
         #region plumbing code
 
         private IWebDriver _driver;
@@ -27,18 +29,12 @@ namespace SeleniumInDepth
             _driver.Dispose();
         }
 
-        private static string GetUrlForFile(string filename)
-        {
-            //return $"file:///{Directory.GetCurrentDirectory()}/{filename}";
-            return "https://SeleniumInDepthDemos.AzureWebSites.net/" + filename;
-        }
-
         #endregion
 
         [TestMethod]
         public void IsItABugInSelenium()
         {
-            _driver.Url = GetUrlForFile("IsItABugInSelenium.html");
+            _driver.Url = BaseUrl + "IsItABugInSelenium.html";
 
             var button = _driver.FindElement(By.Id("myButton"));
             button.Click();
@@ -47,7 +43,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void DoWeReallyNeedWait()
         {
-            _driver.Url = GetUrlForFile("SlowButton.html");
+            _driver.Url = BaseUrl + "SlowButton.html";
 
             var button = _driver.FindElement(By.Id("myButton"));
             var input = _driver.FindElement(By.Id("myInput"));
@@ -60,7 +56,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void WhatsTheDifference()
         {
-            _driver.Url = GetUrlForFile("SlowButton.1.html");
+            _driver.Url = BaseUrl + "SlowButton.1.html";
 
             var button = _driver.FindElement(By.Id("myButton"));
             var input = _driver.FindElement(By.Id("myInput"));
@@ -75,7 +71,7 @@ namespace SeleniumInDepth
         {
             _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
-            _driver.Url = GetUrlForFile("SlowButton.1.html");
+            _driver.Url = BaseUrl + "SlowButton.1.html";
 
             var button = _driver.FindElement(By.Id("myButton"));
             var input = _driver.FindElement(By.Id("myInput"));
@@ -88,7 +84,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void ExplicitWait()
         {
-            _driver.Url = GetUrlForFile("SlowButton.1.html");
+            _driver.Url = BaseUrl + "SlowButton.1.html";
 
             var button = _driver.FindElement(By.Id("myButton"));
             var input = _driver.FindElement(By.Id("myInput"));
@@ -116,7 +112,7 @@ namespace SeleniumInDepth
         [TestMethod] // Which line throws the exception?
         public void ObviousNoSuchElementException()
         {
-            _driver.Url = GetUrlForFile("DummyPage.html");
+            _driver.Url = BaseUrl + "DummyPage.html";
 
             var button = _driver.FindElement(By.Id("NonExistentId"));
 
@@ -128,7 +124,7 @@ namespace SeleniumInDepth
         {
             _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
-            _driver.Url = GetUrlForFile("DynamicElement.html");
+            _driver.Url = BaseUrl + "DynamicElement.html";
             var button = _driver.FindElement(By.Id("myButton"));
             button.Click();
 
@@ -140,7 +136,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void StaleReferenceElementDemo()
         {
-            _driver.Url = GetUrlForFile("RemoveElement.html");
+            _driver.Url = BaseUrl + "RemoveElement.html";
             // Find both elements first - Should succeed!
             var button = _driver.FindElement(By.Id("myButton"));
             var input = _driver.FindElement(By.Id("myInput"));
@@ -157,7 +153,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void UnjustifiedStaleElement()
         {
-            _driver.Url = GetUrlForFile("SeemlessStaleElement.html");
+            _driver.Url = BaseUrl + "SeemlessStaleElement.html";
             var button = _driver.FindElement(By.Id("myButton"));
             var input = _driver.FindElement(By.Id("myInput"));
 
@@ -204,7 +200,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void WasTheButtonReallyClicked()
         {
-            _driver.Url = GetUrlForFile("Calculate.html");
+            _driver.Url = BaseUrl + "Calculate.html";
             var x = _driver.FindElement(By.Id("X"));
             x.SendKeys("5");
             var y = _driver.FindElement(By.Id("Y"));
