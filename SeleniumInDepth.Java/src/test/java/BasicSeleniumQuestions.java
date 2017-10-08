@@ -63,15 +63,15 @@ public class BasicSeleniumQuestions {
     @Test
     public void ExplicitWait()
     {
-        driver.navigate().to(BASE_URL + "SlowButton.1.html");
+        driver.navigate().to(BASE_URL + "SimpleDemo.2.html");
 
         WebElement button = driver.findElement(By.id("myButton"));
         final WebElement input = driver.findElement(By.id("myInput"));
 
         button.click();
         WebDriverWait wait = new WebDriverWait(driver, 10);     // change to 1 second to see it fail
-        wait.until(ExpectedConditions.textToBePresentInElementValue(input, "Done"));
-        Assert.assertEquals("Done", input.getAttribute("value"));
+        Boolean done = wait.until(ExpectedConditions.textToBePresentInElementValue(input, "Done"));
+        Assert.assertTrue(done);
     }
 
     @Test
