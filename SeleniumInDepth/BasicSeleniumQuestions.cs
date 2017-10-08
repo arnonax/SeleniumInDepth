@@ -10,7 +10,7 @@ namespace SeleniumInDepth
     [TestClass]
     public class BasicSeleniumQuestions
     {
-        private const string BaseUrl = "https://SeleniumInDepthDemos.AzureWebSites.net/";
+        public const string BaseUrl = "https://SeleniumInDepthDemos.AzureWebSites.net/";
         
         #region plumbing code
 
@@ -157,23 +157,6 @@ namespace SeleniumInDepth
             elements = _driver.FindElements(By.Id("non-exitent-id"));
             Console.WriteLine("FindElements(By.Id(\"non-exitent-id\")) returned at: {0:T}", DateTime.Now);
             Console.WriteLine("Elements found: {0}", elements.Count);
-        }
-
-        [TestMethod]
-        public void WasTheButtonReallyClicked()
-        {
-            _driver.Url = BaseUrl + "Calculate.html";
-            var x = _driver.FindElement(By.Id("X"));
-            x.SendKeys("5");
-            var y = _driver.FindElement(By.Id("Y"));
-            y.SendKeys("3");
-            var button = _driver.FindElement(By.TagName("button"));
-            button.Click();
-
-            var result = _driver.FindElement(By.Id("calculationResult")).Text;
-            Assert.AreEqual("8", result);
-
-            // If this would happen only occasionally, who would you blame?
         }
     }
 }

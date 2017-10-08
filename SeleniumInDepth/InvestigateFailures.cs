@@ -12,6 +12,7 @@ namespace SeleniumInDepth
     [TestClass]
     public class FailingTest
     {
+        // ReSharper disable once InconsistentNaming
         protected IWebDriver _driver;
 
         [TestInitialize]
@@ -31,7 +32,9 @@ namespace SeleniumInDepth
         [TestMethod]
         public void WasTheButtonReallyClicked()
         {
-            _driver.Url = $"file:///{Directory.GetCurrentDirectory()}/Calculate.html";
+            _driver.Url = BasicSeleniumQuestions.BaseUrl + "Calculate.passes.html";
+            //_driver.Url = BasicSeleniumQuestions.BaseUrl + "Calculate.fails.html";
+
             var x = _driver.FindElement(By.Id("X"));
             x.SendKeys("5");
             var y = _driver.FindElement(By.Id("Y"));
@@ -41,8 +44,6 @@ namespace SeleniumInDepth
 
             var result = _driver.FindElement(By.Id("calculationResult")).Text;
             Assert.AreEqual("8", result);
-
-            // If this would happen only occasionally, who would you blame?
         }
     }
 
