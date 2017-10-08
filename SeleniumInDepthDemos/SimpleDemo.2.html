@@ -1,9 +1,8 @@
 ﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Wait 3 seconds</title>
     <script>
         
-        function wait3Seconds() {
+        function updateInput() {
             window.setTimeout(function() {
                     document.getElementById("myInput").value = "Done";
                 },
@@ -13,7 +12,7 @@
     </script>
 </head>
 <body>
-    <button id="myButton" onclick="wait3Seconds()">Click me!</button>
+    <button id="myButton" onclick="updateInput()">Click me!</button>
     <input id="myInput"/>
 </body>
 </html>

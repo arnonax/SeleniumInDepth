@@ -32,71 +32,24 @@ namespace SeleniumInDepth
         #endregion
 
         [TestMethod]
-        public void IsItABugInSelenium()
+        public void SimpleDemo()
         {
-            _driver.Url = BaseUrl + "IsItABugInSelenium.html";
+            //_driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
-            var button = _driver.FindElement(By.Id("myButton"));
-            button.Click();
-        }
-
-        [TestMethod]
-        public void DoWeReallyNeedWait()
-        {
-            _driver.Url = BaseUrl + "SlowButton.html";
-
-            var button = _driver.FindElement(By.Id("myButton"));
-            var input = _driver.FindElement(By.Id("myInput"));
-
-            // Click and immidiately assert!
-            button.Click();
-            Assert.AreEqual("Done", input.GetAttribute("value"));
-        }
-
-        [TestMethod]
-        public void WhatsTheDifference()
-        {
-            _driver.Url = BaseUrl + "SlowButton.1.html";
-
-            var button = _driver.FindElement(By.Id("myButton"));
-            var input = _driver.FindElement(By.Id("myInput"));
-
-            // Click and immidiately assert!
-            button.Click();
-            Assert.AreEqual("Done", input.GetAttribute("value"));
-        }
-
-        [TestMethod]
-        public void WillThisHelp()
-        {
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-
-            _driver.Url = BaseUrl + "SlowButton.1.html";
-
-            var button = _driver.FindElement(By.Id("myButton"));
-            var input = _driver.FindElement(By.Id("myInput"));
-
-            // Click and immidiately assert!
-            button.Click();
-            Assert.AreEqual("Done", input.GetAttribute("value"));
-        }
-
-        [TestMethod]
-        public void ExplicitWait()
-        {
-            _driver.Url = BaseUrl + "SlowButton.1.html";
+            var page = "SimpleDemo.html";
+            //var page = "SimpleDemo.1.html";
+            //var page = "SimpleDemo.2.html";
+            //var page = "SimpleDemo.3.html";
+            _driver.Url = BaseUrl + page;
 
             var button = _driver.FindElement(By.Id("myButton"));
             var input = _driver.FindElement(By.Id("myInput"));
 
             button.Click();
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));     // change to 1 second to see it fail
-            wait.Until(drv => input.GetAttribute("value") != "");
-            wait.Until(ExpectedConditions.TextToBePresentInElementValue(input, "Done"));
             Assert.AreEqual("Done", input.GetAttribute("value"));
         }
 
-                [TestMethod]
+        [TestMethod]
         public void WaitAndIgnoreExceptions()
         {
             const string filename = @"c:\temp\test.txt";

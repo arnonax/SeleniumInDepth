@@ -84,7 +84,7 @@
     <Content Include="DynamicElement.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="IsItABugInSelenium.html">
+    <Content Include="SimpleDemo.3.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="JavaScriptExamples.html">
@@ -96,10 +96,13 @@
     <Content Include="SeemlessStaleElement.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SlowButton.1.html">
+    <Content Include="SimpleDemo.1.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SlowButton.html">
+    <Content Include="SimpleDemo.2.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SimpleDemo.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.config" />
