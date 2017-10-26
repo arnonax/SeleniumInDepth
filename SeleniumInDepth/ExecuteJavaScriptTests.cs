@@ -66,7 +66,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void ElementArgument()
         {
-            var span = _driver.FindElement(By.Id("mySpan"));
+            IWebElement span = _driver.FindElement(By.Id("mySpan"));
             _driver.ExecuteJavaScript("setText(arguments[0], 'Some text')", span);
 
             Assert.AreEqual("Some text", span.Text);
