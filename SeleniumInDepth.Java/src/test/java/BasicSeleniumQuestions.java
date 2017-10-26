@@ -87,7 +87,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test // Which line throws the exception?
-    public void obviousNoSuchElementException()
+    public void NoSuchElementExceptionTest()
     {
         driver.navigate().to(BASE_URL + "DummyPage.html");
 

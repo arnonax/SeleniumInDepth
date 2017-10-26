@@ -77,7 +77,7 @@ namespace SeleniumInDepth
         }
 
         [TestMethod] // Which line throws the exception?
-        public void ObviousNoSuchElementException()
+        public void NoSuchElementExceptionTest()
         {
             _driver.Url = BaseUrl + "DummyPage.html";
 
