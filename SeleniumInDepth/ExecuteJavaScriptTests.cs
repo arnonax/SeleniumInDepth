@@ -1,10 +1,8 @@
 ﻿using System;
-using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.Extensions;
-using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumInDepth
 {
@@ -20,7 +18,7 @@ namespace SeleniumInDepth
         {
             _driver = new ChromeDriver
             {
-                Url = GetUrlForFile("JavaScriptExamples.html")
+                Url = BasicSeleniumQuestions.BaseUrl + "JavaScriptExamples.html"
             };
         }
 
@@ -30,17 +28,11 @@ namespace SeleniumInDepth
             _driver.Dispose();
         }
 
-        private static string GetUrlForFile(string filename)
-        {
-            return $"file:///{Directory.GetCurrentDirectory()}/{filename}";
-        }
-
         #endregion
 
         [TestMethod]
         public void SimpleExample()
         {
-            _driver.Url = GetUrlForFile("JavaScriptExamples.html");
             var result = _driver.ExecuteJavaScript<long>("return 2+3");
             Assert.AreEqual(5, result);
         }
