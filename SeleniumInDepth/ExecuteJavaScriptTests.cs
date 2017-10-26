@@ -94,7 +94,7 @@ window.setTimeout(function() {
         [TestMethod]
         public void ExecuteAsync()
         {
-            _driver.Manage().Timeouts().SetScriptTimeout(TimeSpan.FromSeconds(10));
+            _driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(10);
 
             var span = _driver.FindElement(By.Id("mySpan"));
             const string script = @"
