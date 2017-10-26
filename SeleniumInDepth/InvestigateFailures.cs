@@ -54,7 +54,7 @@ namespace SeleniumInDepth
         public override void TestCleanup()
         {
             var screenshot = _driver.TakeScreenshot();
-            screenshot.SaveAsFile("Screenshot.jpg", ImageFormat.Jpeg);
+            screenshot.SaveAsFile("Screenshot.jpg", ScreenshotImageFormat.Jpeg);
             TestContext.AddResultFile("Screenshot.jpg");
 
             base.TestCleanup();
