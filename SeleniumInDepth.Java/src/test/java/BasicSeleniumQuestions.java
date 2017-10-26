@@ -150,7 +150,7 @@ public class BasicSeleniumQuestions {
     }
 
     @Test
-    public void findElementsAndExplicitlyWait()
+    public void findElementsAndImplicitlyWait()
     {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.navigate().to("http://www.google.com");

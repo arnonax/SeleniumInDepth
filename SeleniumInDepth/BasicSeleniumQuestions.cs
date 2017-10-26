@@ -140,7 +140,7 @@ namespace SeleniumInDepth
         }
 
         [TestMethod]
-        public void FindElementsAndExplicitlyWait()
+        public void FindElementsAndImplicitlyWait()
         {
             _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
             _driver.Url = "http://www.google.com";
