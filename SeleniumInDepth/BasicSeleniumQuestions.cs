@@ -33,7 +33,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void SimpleDemo()
         {
-            //_driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            //_driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             var page = "SimpleDemo.html";
             //var page = "SimpleDemo.1.html";

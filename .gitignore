@@ -358,3 +358,4 @@ crashlytics-build.properties
 fabric.properties
 
 SeleniumInDepth.Java/target/
+/codealike.json
