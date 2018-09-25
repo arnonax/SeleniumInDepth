@@ -33,7 +33,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void SimpleDemo()
         {
-            //_driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            //_driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             var page = "SimpleDemo.html";
             //var page = "SimpleDemo.1.html";
@@ -89,7 +89,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void WhenImplicitlyWaitHelps()
         {
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             _driver.Url = BaseUrl + "DynamicElement.html";
             var button = _driver.FindElement(By.Id("myButton"));
@@ -142,7 +142,7 @@ namespace SeleniumInDepth
         [TestMethod]
         public void FindElementsAndImplicitlyWait()
         {
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             _driver.Url = "http://www.google.com";
             IReadOnlyCollection<IWebElement> elements;
 
