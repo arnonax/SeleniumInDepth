@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -10,8 +11,9 @@ namespace SeleniumInDepth
     [TestClass]
     public class BasicSeleniumQuestions
     {
-        public const string BaseUrl = "https://SeleniumInDepthDemos.AzureWebSites.net/";
-        
+        public const string BaseUrl = @"C:\Work\PresentationsAndDemos\SeleniumInDepth.BTC2017\SeleniumInDepth\SeleniumInDepthDemos\";//"https://SeleniumInDepthDemos.AzureWebSites.net/";
+        //                              C:\Work\PresentationsAndDemos\SeleniumInDepth.BTC2017\SeleniumInDepth\SeleniumInDepthDemos\JavaScriptExamples.html
+
         #region plumbing code
 
         private IWebDriver _driver;
@@ -76,6 +78,16 @@ namespace SeleniumInDepth
             Assert.AreEqual("4", num.Text);
         }
 
+        [TestMethod]
+        public void WaitUntilAFileExists()
+        {
+            var wait = new WebDriverWait(_driver, TimeSpan.FromMinutes(10));
+            const string filename = @"C:\temp\TestConf.txt";
+
+            wait.Until(drv => File.Exists(filename));
+            Console.WriteLine(File.ReadAllText(filename));
+        }
+
         [TestMethod] // Which line throws the exception?
         public void NoSuchElementExceptionTest()
         {
@@ -135,6 +147,7 @@ namespace SeleniumInDepth
             // a. NoSuchElementException will be throw
             // b. elements will be null
             // c. elements will contain 0 elements
+            // d. Something else
 
             Console.WriteLine(elements.Count);
         }
